@@ -1,5 +1,8 @@
 package com.biolete.datacentralizer.helpers;
 
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -8,27 +11,23 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import com.biolete.datacentralizer.models.Second;
 
-import com.biolete.datacentralizer.models.First;
-
-public class FirstHelper {
+public class SecondHelper {
     static String SHEET_TITLE = "Sheet1";
     static String[] COLUMN_TITLES = {
-            "Name\n",
-            "Experience\n",
-            "Expected Salary\n",
-            "Availability\n"
+            "Title\n",
+            "Required Experience\n",
+            "Budget\n"
     };
 
-    public static List<First> readDataFromFile(InputStream inputStream) {
+    public static List<Second> readDataFromFile(InputStream inputStream) {
         try {
             Workbook workbook = new XSSFWorkbook(inputStream);
-            // Get the first sheet of the document (it should be called Sheet1)
+            // Get the second sheet of the document (it should be called Sheet1)
             Sheet sheet = workbook.getSheetAt(0);
             Iterator<Row> rows = sheet.iterator();
-            List<First> firstList = new ArrayList<First>();
+            List<Second> secondList = new ArrayList<Second>();
 
             int rowNumber = 0;
 
@@ -42,7 +41,7 @@ public class FirstHelper {
                 }
 
                 Iterator<Cell> cellsInRow = currentRow.iterator();
-                First first = new First();
+                Second second = new Second();
 
                 int cellIndex = 0;
 
@@ -51,22 +50,17 @@ public class FirstHelper {
 
                     switch (cellIndex) {
                         case 0:
-                            first.setName((String) currentCell.getStringCellValue());
+                            second.setTitle((String) currentCell.getStringCellValue());
                             break;
                         case 1:
                             if (currentCell.getCellType() != CellType.NUMERIC)
                                 break;
-                            first.setExperience((int) currentCell.getNumericCellValue());
+                            second.setRequiredExperience((int) currentCell.getNumericCellValue());
                             break;
                         case 2:
                             if (currentCell.getCellType() != CellType.NUMERIC)
                                 break;
-                            first.setExpectedSalary((long) currentCell.getNumericCellValue());
-                            break;
-                        case 3:
-                            if (currentCell.getCellType() != CellType.NUMERIC)
-                                break;
-                            first.setAvailability((float) currentCell.getNumericCellValue());
+                            second.setBudget((long) currentCell.getNumericCellValue());
                             break;
                         default:
                             break;
@@ -74,18 +68,18 @@ public class FirstHelper {
                     cellIndex++;
                 }
 
-                firstList.add(first);
+                secondList.add(second);
             }
 
             workbook.close();
 
-            return firstList;
+            return secondList;
         } catch (IOException e) {
             throw new RuntimeException("Failed to read data! " + e.getMessage());
         }
     }
 
-    public static ByteArrayInputStream writeDataToFile(List<First> firstList) {
+    public static ByteArrayInputStream writeDataToFile(List<Second> secondList) {
         try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream();) {
             Sheet sheet = workbook.createSheet(SHEET_TITLE);
             // Create header
@@ -98,13 +92,12 @@ public class FirstHelper {
 
             int rowIndex = 1;
 
-            for (First first : firstList) {
+            for (Second second : secondList) {
                 Row row = sheet.createRow(rowIndex++);
 
-                row.createCell(0).setCellValue(first.getName());
-                row.createCell(1).setCellValue(first.getExperience());
-                row.createCell(2).setCellValue(first.getExpectedSalary());
-                row.createCell(3).setCellValue(first.getAvailability());
+                row.createCell(0).setCellValue(second.getTitle());
+                row.createCell(1).setCellValue(second.getRequiredExperience());
+                row.createCell(2).setCellValue(second.getBudget());
             }
 
             workbook.write(out);
