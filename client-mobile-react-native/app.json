@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "client-mobile-react-native",
+    "slug": "client-mobile-react-native",
+    "version": "1.0.0",
+    "sdkVersion": "42.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "android": {
+      "package": "com.biolete.dataorganiser"
+    }
+  }
+}
