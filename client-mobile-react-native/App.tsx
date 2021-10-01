@@ -10,9 +10,9 @@ import ImportForm from './views/ImportForm';
 import GeneratedTable from './views/GeneratedTable';
 import FirstTable from './views/FirstTable';
 import SecondTable from './views/SecondTable';
-import { generatedTablePlaceholder } from './testing/generatedTablePlaceholder';
-import { firstTablePlaceholder } from './testing/firstTablePlaceholder';
-import { secondTablePlaceholder } from './testing/secondTablePlaceholder';
+// import { generatedTablePlaceholder } from './testing/generatedTablePlaceholder';
+// import { firstTablePlaceholder } from './testing/firstTablePlaceholder';
+// import { secondTablePlaceholder } from './testing/secondTablePlaceholder';
 
 type TabParamList = {
   Dashboard: undefined;
@@ -36,9 +36,127 @@ const FirstStack = createNativeStackNavigator<FirstStackParamList>();
 const SecondStack = createNativeStackNavigator<SecondStackParamList>();
 
 const App: React.FC = () => {
-  const [generatedTableData, setGeneratedTableData] = React.useState(generatedTablePlaceholder);
-  const [firstTableData, setFirstTableData] = React.useState(firstTablePlaceholder);
-  const [secondTableData, setSecondTableData] = React.useState(secondTablePlaceholder);
+  /*
+   * Use the following command if you have issues with testing your local hosted API and you have a
+   * phone connected through USB:
+   *   adb reverse tcp:8080 tcp:8080
+   *
+   * Otherwise, if you can't test the API, there are a few values as example added in ./tests/*.
+   */
+  const [generatedTableData, setGeneratedTableData] = React.useState([]);
+  const [firstTableData, setFirstTableData] = React.useState([]);
+  const [secondTableData, setSecondTableData] = React.useState([]);
+
+
+  React.useEffect(() => {
+    const getGenerated = async() => {
+      const generatedFromServer = await fetchGenerated();
+      setGeneratedTableData(generatedFromServer);
+    };
+
+    getGenerated();
+  }, []);
+
+  React.useEffect(() => {
+    const getFirst = async() => {
+      const firstFromServer = await fetchFirst();
+      setFirstTableData(firstFromServer);
+    };
+
+    getFirst();
+  }, []);
+
+  React.useEffect(() => {
+    const getSecond = async() => {
+      const secondFromServer = await fetchSecond();
+      setSecondTableData(secondFromServer);
+    };
+
+    getSecond();
+  }, []);
+
+  const fetchGenerated = async () => {
+    // Use your local IPv4 address (from the same network as your phone) instead of localhost, if it does not work.
+    const res = await fetch(
+      `http://localhost:8080/api/generated`
+    );
+    const data = await res.json();
+
+    console.log(data);
+
+    return data;
+  };
+
+  const generateReport = async () => {
+    const res = await fetch(
+      `http://localhost:8080/api/generated/generate`
+    );
+    const data = await res.json();
+
+    console.log(data);
+
+    return data;
+  };
+
+  const fetchFirst = async () => {
+    // Use your local IPv4 address (from the same network as your phone) instead of localhost, if it does not work.
+    const res = await fetch(
+      `http://localhost:8080/api/first`
+    );
+    const data = await res.json();
+
+    console.log(data);
+
+    return data;
+  };
+
+  const importFirst = async (e: React.ChangeEvent | React.FormEvent, file: any) => {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+
+    e.preventDefault();
+
+    const res = await fetch(
+      `http://localhost:8080/api/first/import`,
+      {
+        method: 'POST',
+        body: formData
+      }
+    );
+    const data = await res.json();
+
+    console.log(data);
+  };
+
+  const fetchSecond = async () => {
+    // Use your local IPv4 address (from the same network as your phone) instead of localhost, if it does not work.
+    const res = await fetch(
+      `http://localhost:8080/api/second`
+    );
+    const data = await res.json();
+
+    console.log(data);
+
+    return data;
+  };
+
+  const importSecond = async (e: React.ChangeEvent | React.FormEvent, file: any) => {
+    const formData = new FormData();
+    formData.append('file', file, file.name);
+
+    e.preventDefault();
+
+    const res = await fetch(
+      `http://localhost:8080/api/second/import`,
+      {
+        method: 'POST',
+        body: formData
+      }
+    );
+    const data = await res.json();
+
+    console.log(data);
+  };
 
   const FirstStackScreen: React.FC = () => {
     return (
