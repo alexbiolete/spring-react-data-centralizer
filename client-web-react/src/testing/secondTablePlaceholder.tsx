@@ -9,7 +9,7 @@ export const secondTablePlaceholder = [
     id: 2,
     title: 'Customer Service Representative',
     requiredExperience: 1,
-    budget: 5000
+    budget: 3500
   },
   {
     id: 3,

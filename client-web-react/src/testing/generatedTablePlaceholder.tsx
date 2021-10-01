@@ -5,8 +5,8 @@ export const generatedTablePlaceholder = [
     name: 'Ion Popescu',
     requiredExperience: 1,
     experience: 3,
-    budget: 5000,
-    expectedSalary: 4000,
+    budget: 3500,
+    expectedSalary: 3000,
     availability: 0
   },
   {
@@ -15,8 +15,8 @@ export const generatedTablePlaceholder = [
     name: 'Alina Cojocaru',
     requiredExperience: 1,
     experience: 4,
-    budget: 5000,
-    expectedSalary: 5000,
+    budget: 3500,
+    expectedSalary: 3500,
     availability: 0
   },
   {
