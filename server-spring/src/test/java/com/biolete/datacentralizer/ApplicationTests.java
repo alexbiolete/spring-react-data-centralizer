@@ -1,10 +1,10 @@
-package com.alexbiolete.datacentralizer;
+package com.biolete.datacentralizer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DatacentralizerApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {

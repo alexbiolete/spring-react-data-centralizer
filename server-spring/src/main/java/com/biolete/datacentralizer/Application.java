@@ -1,13 +1,13 @@
-package com.alexbiolete.datacentralizer;
+package com.biolete.datacentralizer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DataCentralizerApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DataCentralizerApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }
