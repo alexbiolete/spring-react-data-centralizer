@@ -92,6 +92,179 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Second",
+			"item": [
+				{
+					"name": "View",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/second",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"second"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/spring-react-data-centralizer/testing/input/data_second.xlsx"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/second/import",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"second",
+								"import"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Disposition",
+								"value": "attachment; filename=data_second.xlsx",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.ms-excel",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/second/export",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"second",
+								"export"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Generated",
+			"item": [
+				{
+					"name": "View",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/generated",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"generated"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/generated/generate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"generated",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Disposition",
+								"value": "attachment; filename=data_generated.xlsx",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.ms-excel",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/generated/export",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"generated",
+								"export"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
