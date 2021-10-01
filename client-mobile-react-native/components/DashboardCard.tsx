@@ -2,14 +2,16 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-const DashboardCard: React.FC<any> = ({ title, data, icon }) => {
+const DashboardCard: React.FC<any> = ({ title, count, icon }) => {
   return (
     <View style={styles.container}>
       <FeatherIcon name={icon} style={styles.icon} size={196} />
-      <Text style={styles.title}>{title}</Text>
-      {data.length > 0 ? (
+      <Text style={styles.title}>
+        {title}
+      </Text>
+      {count > 0 ? (
         <Text style={styles.content}>
-          {data.length} entries
+          {count} entries
         </Text>
       ) : (
         <Text style={styles.content}>

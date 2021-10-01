@@ -10,6 +10,9 @@ import ImportForm from './views/ImportForm';
 import GeneratedTable from './views/GeneratedTable';
 import FirstTable from './views/FirstTable';
 import SecondTable from './views/SecondTable';
+import { generatedTablePlaceholder } from './testing/generatedTablePlaceholder';
+import { firstTablePlaceholder } from './testing/firstTablePlaceholder';
+import { secondTablePlaceholder } from './testing/secondTablePlaceholder';
 
 type TabParamList = {
   Dashboard: undefined;
@@ -33,9 +36,9 @@ const FirstStack = createNativeStackNavigator<FirstStackParamList>();
 const SecondStack = createNativeStackNavigator<SecondStackParamList>();
 
 const App: React.FC = () => {
-  const [generatedTableData, setGeneratedTableData] = React.useState([]);
-  const [firstTableData, setFirstTableData] = React.useState([]);
-  const [secondTableData, setSecondTableData] = React.useState([]);
+  const [generatedTableData, setGeneratedTableData] = React.useState(generatedTablePlaceholder);
+  const [firstTableData, setFirstTableData] = React.useState(firstTablePlaceholder);
+  const [secondTableData, setSecondTableData] = React.useState(secondTablePlaceholder);
 
   const FirstStackScreen: React.FC = () => {
     return (
@@ -88,7 +91,8 @@ const App: React.FC = () => {
             fontWeight: 'bold',
             // letterSpacing: 1.25,
             color: '#212837'
-          },          // headerStyle: {
+          },
+          // headerStyle: {
           //   elevation: 0,     // remove shadow on Android
           //   shadowOpacity: 0, // remove shadow on iOS
           //   borderBottomWidth: 1,
@@ -196,7 +200,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginHorizontal: 12,
-    color: '#777777'
+    color: '#6B7280'
   },
 });
 
