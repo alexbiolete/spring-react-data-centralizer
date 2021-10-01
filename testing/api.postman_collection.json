@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "bd1f0b48-c143-4fc1-a6b4-293ee8719f49",
+		"name": "Spring - Data Centralizer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "First",
+			"item": [
+				{
+					"name": "View",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/first",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"first"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/spring-react-data-centralizer/testing/input/data_first.xlsx"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/first/import",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"first",
+								"import"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Disposition",
+								"value": "attachment; filename=data_first.xlsx",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.ms-excel",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/first/export",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"first",
+								"export"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
