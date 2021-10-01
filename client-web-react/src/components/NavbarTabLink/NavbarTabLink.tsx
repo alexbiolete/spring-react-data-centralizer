@@ -6,7 +6,7 @@ const NavbarTabLink: FC<any> = ({ label, icon, path }) => {
 
   return (
     <Link to={path} className="flex-1">
-      <p className={`flex flex-col items-center space-y-1
+      <p className={`flex flex-col items-center space-y-1 tracking-tighter
         ${"/".concat(location.pathname.split('/')[1]) !== path ?
           'text-gray-500 hover:text-green-500 transition ease-in-out duration-300'
         :
@@ -17,7 +17,7 @@ const NavbarTabLink: FC<any> = ({ label, icon, path }) => {
         <span className="relative">
           {icon}
         </span>
-        <span className="font-semibold tracking-wide text-sm">
+        <span className="font-semibold text-sm">
           {label}
         </span>
       </p>

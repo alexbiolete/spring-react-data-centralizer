@@ -14,6 +14,9 @@ const Navbar: FC = () => {
         <div className="w-full max-w-7xl mx-auto px-4 md:px-8 flex">
           <div className="flex-1 inline-flex items-center justify-begin">
             {location.pathname !== '/' &&
+             location.pathname !== '/generated' &&
+             location.pathname !== '/first' &&
+             location.pathname !== '/second' &&
               <NavbarButton
                 label="Back"
                 icon={
@@ -28,7 +31,7 @@ const Navbar: FC = () => {
             }
           </div>
           <div className="flex-grow flex md:hidden items-center justify-center">
-            <h1 className="capitalize font-semibold tracking-wider text-xl text-green-900 select-none mb-1">
+            <h1 className="capitalize font-bold text-base text-gray-800 select-none mb-1">
               {location.pathname !== "/" ? location.pathname.slice(1).replace("/", " ") : "Dashboard"}
             </h1>
           </div>
