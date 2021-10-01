@@ -146,13 +146,13 @@ const App: FC = () => {
               <FirstTable data={firstTableData} />
             </Route>
             <Route path="/first/import" exact>
-              <ImportForm />
+              <ImportForm importFile={importFirst} />
             </Route>
             <Route path="/second" exact>
               <SecondTable data={secondTableData} />
             </Route>
             <Route path="/second/import" exact>
-              <ImportForm />
+              <ImportForm importFile={importSecond} />
             </Route>
             <Route path="*" component={NotFound} />
           </Switch>
