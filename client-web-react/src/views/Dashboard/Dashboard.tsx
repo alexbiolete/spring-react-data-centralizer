@@ -6,7 +6,7 @@ const Dashboard: FC<any> = ({ firstTableData, secondTableData }) => {
     <div className="px-4 md:px-8 py-4 md:py-0 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
       <DashboardCard
         title="First Report Data"
-        data={firstTableData}
+        count={firstTableData.length}
         icon={
           <Fragment>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -18,7 +18,7 @@ const Dashboard: FC<any> = ({ firstTableData, secondTableData }) => {
       />
       <DashboardCard
         title="Second Report Data"
-        data={secondTableData}
+        count={secondTableData.length}
         icon={
           <Fragment>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
