@@ -1,12 +1,12 @@
 import { FC, Fragment } from 'react';
 import DashboardCard from '../../components/DashboardCard/DashboardCard';
 
-const Dashboard: FC<any> = ({ firstReportData, secondReportData }) => {
+const Dashboard: FC<any> = ({ firstTableData, secondTableData }) => {
   return (
     <div className="px-4 md:px-8 py-4 md:py-0 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
       <DashboardCard
         title="First Report Data"
-        data={firstReportData}
+        data={firstTableData}
         icon={
           <Fragment>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -18,7 +18,7 @@ const Dashboard: FC<any> = ({ firstReportData, secondReportData }) => {
       />
       <DashboardCard
         title="Second Report Data"
-        data={secondReportData}
+        data={secondTableData}
         icon={
           <Fragment>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

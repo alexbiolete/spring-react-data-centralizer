@@ -5,14 +5,18 @@ import Footer from './components/Footer/Footer';
 import NotFound from './views/NotFound/NotFound';
 import Dashboard from './views/Dashboard/Dashboard';
 import ImportForm from './views/ImportForm/ImportForm';
-import GeneratedReport from './views/GeneratedReport/GeneratedReport';
-import FirstReport from './views/FirstReport/FirstReport';
-import SecondReport from './views/SecondReport/SecondReport';
+import { First } from './types/First';
+import GeneratedTable from './views/GeneratedTable/GeneratedTable';
+import FirstTable from './views/FirstTable/FirstTable';
+import SecondTable from './views/SecondTable/SecondTable';
+import { generatedTablePlaceholder } from './testing/generatedTablePlaceholder';
+import { firstTablePlaceholder } from './testing/firstTablePlaceholder';
+import { secondTablePlaceholder } from './testing/secondTablePlaceholder';
 
 const App: FC = () => {
-  const [generatedReportData, setGeneratedReportData] = useState([]);
-  const [firstReportData, setFirstReportData] = useState([]);
-  const [secondReportData, setSecondReportData] = useState([]);
+  const [generatedTableData, setGeneratedTableData] = useState(generatedTablePlaceholder);
+  const [firstTableData, setFirstTableData] = useState(firstTablePlaceholder);
+  const [secondTableData, setSecondTableData] = useState(secondTablePlaceholder);
 
   return (
     <BrowserRouter>
@@ -21,19 +25,19 @@ const App: FC = () => {
         <div className="w-full max-w-7xl mx-auto md:py-8">
           <Switch>
             <Route path="/" exact>
-              <Dashboard firstReportData={firstReportData} secondReportData={secondReportData} />
+              <Dashboard firstTableData={firstTableData} secondTableData={secondTableData} />
             </Route>
             <Route path="/generated" exact>
-              <GeneratedReport />
+              <GeneratedTable data={generatedTableData} />
             </Route>
             <Route path="/first" exact>
-              <FirstReport />
+              <FirstTable data={firstTableData} />
             </Route>
             <Route path="/first/import" exact>
               <ImportForm />
             </Route>
             <Route path="/second" exact>
-              <SecondReport />
+              <SecondTable data={secondTableData} />
             </Route>
             <Route path="/second/import" exact>
               <ImportForm />
