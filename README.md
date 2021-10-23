@@ -1,6 +1,6 @@
 # Data Centralizer
 
-A simple application for centralizing the data from reports in Excel/Spreadsheet format and manipulate it to generate a new report.
+A simple (unfinished) application for centralizing the data from reports in Excel/Spreadsheet format and manipulate it to generate a new report.
 
 As an example I created a microservice "First" which handles data about potential candidates for hiring, a microservice "Second" which handles data about job positions and in the microservice "Generate" it should gather data from the other two microservices and generate a new report based on it, which can be exported in Excel/Spreadsheet format.
 
@@ -11,6 +11,7 @@ As an example I created a microservice "First" which handles data about potentia
   - Apache POI
 - Frontend (Web): **React.js**
   - TypeScript (JavaScript ES6)
+  - React Router
   - Sass
   - CRACO
   - TailwindCSS
